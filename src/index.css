@@ -1,0 +1,278 @@
+/* Chessground core styles (must come before @tailwind) */
+@import 'chessground/assets/chessground.base.css';
+@import 'chessground/assets/chessground.brown.css';
+@import 'chessground/assets/chessground.cburnett.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   Satranç — Modern Chess Theme
+   ============================================ */
+
+@layer base {
+  /* Light theme */
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 222 25% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 25% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 25% 18%;
+    --primary: 220 90% 56%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 94%;
+    --secondary-foreground: 222 25% 22%;
+    --muted: 220 14% 94%;
+    --muted-foreground: 220 9% 42%;
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 220 90% 56%;
+    --radius: 0.75rem;
+
+    --board-light: #ebecd0;
+    --board-dark: #779556;
+    --board-highlight: rgba(255, 220, 80, 0.5);
+    --board-lastmove: rgba(155, 199, 0, 0.41);
+
+    --eval-good: 142 71% 45%;
+    --eval-bad: 0 75% 55%;
+    --piece-blunder: 0 75% 55%;
+    --piece-mistake: 25 95% 53%;
+    --piece-inaccuracy: 48 96% 53%;
+    --piece-good: 142 71% 45%;
+    --piece-best: 178 78% 41%;
+
+    --sat: env(safe-area-inset-top);
+    --sab: env(safe-area-inset-bottom);
+  }
+
+  /* Dark theme (default) */
+  .dark {
+    --background: 222 30% 6%;
+    --foreground: 220 14% 96%;
+    --card: 222 25% 10%;
+    --card-foreground: 220 14% 96%;
+    --popover: 222 25% 10%;
+    --popover-foreground: 220 14% 96%;
+    --primary: 220 90% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 20% 16%;
+    --secondary-foreground: 220 14% 96%;
+    --muted: 222 18% 14%;
+    --muted-foreground: 220 9% 65%;
+    --accent: 38 95% 55%;
+    --accent-foreground: 222 30% 6%;
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 71% 50%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 95% 55%;
+    --warning-foreground: 222 30% 6%;
+    --border: 222 20% 18%;
+    --input: 222 20% 18%;
+    --ring: 220 90% 60%;
+
+    --board-light: #ebecd0;
+    --board-dark: #779556;
+    --board-highlight: rgba(240, 178, 50, 0.45);
+    --board-lastmove: rgba(155, 199, 0, 0.41);
+
+    --eval-good: 142 71% 50%;
+    --eval-bad: 0 75% 60%;
+  }
+
+  /* Midnight (OLED) theme */
+  .midnight {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 95%;
+    --card: 222 25% 6%;
+    --card-foreground: 0 0% 95%;
+    --popover: 222 25% 6%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 220 95% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 20% 10%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 222 18% 10%;
+    --muted-foreground: 220 9% 65%;
+    --accent: 38 95% 58%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 80% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 71% 50%;
+    --success-foreground: 0 0% 100%;
+    --border: 222 20% 14%;
+    --input: 222 20% 14%;
+    --ring: 220 95% 65%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'rlig' 1, 'calt' 1, 'ss01' 1;
+    color-scheme: dark light;
+    min-height: 100vh;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html, body, #root {
+    height: 100%;
+  }
+}
+
+/* ============================================
+   Chessground theme overrides
+   ============================================ */
+
+cg-board {
+  background-color: var(--board-light);
+}
+
+.cg-wrap square.last-move {
+  background-color: var(--board-lastmove);
+}
+
+.cg-wrap square.selected {
+  background-color: var(--board-highlight);
+}
+
+.cg-wrap square.move-dest {
+  background: radial-gradient(rgba(20, 85, 30, 0.5) 22%, rgba(0, 0, 0, 0) 0);
+}
+
+.cg-wrap square.premove-dest {
+  background: radial-gradient(rgba(20, 30, 85, 0.4) 22%, rgba(0, 0, 0, 0) 0);
+}
+
+.cg-wrap square.oc.move-dest {
+  background: radial-gradient(transparent 0%, transparent 80%, rgba(20, 85, 0, 0.3) 80%);
+}
+
+.cg-wrap.disabled {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.cg-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+/* Move classification colors on board */
+.cg-wrap square.move-blunder {
+  background-color: hsl(var(--piece-blunder) / 0.4);
+}
+.cg-wrap square.move-mistake {
+  background-color: hsl(var(--piece-mistake) / 0.4);
+}
+.cg-wrap square.move-inaccuracy {
+  background-color: hsl(var(--piece-inaccuracy) / 0.4);
+}
+.cg-wrap square.move-best {
+  background-color: hsl(var(--piece-best) / 0.4);
+}
+
+/* ============================================
+   Utility layers
+   ============================================ */
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-md border;
+    background-color: hsl(var(--card) / 0.65);
+    border-color: hsl(var(--border) / 0.5);
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 24px hsl(var(--primary) / 0.25);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 24px hsl(var(--accent) / 0.3);
+  }
+
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .text-gradient-success {
+    @apply bg-gradient-to-r from-success to-accent bg-clip-text text-transparent;
+  }
+
+  .card-modern {
+    @apply rounded-xl border transition-all duration-300;
+    background: hsl(var(--card) / 0.6);
+    border-color: hsl(var(--border) / 0.4);
+    box-shadow: 0 1px 2px hsl(0 0% 0% / 0.04), 0 4px 16px hsl(0 0% 0% / 0.04);
+  }
+
+  .card-modern:hover {
+    border-color: hsl(var(--primary) / 0.25);
+    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.1), 0 4px 24px hsl(var(--primary) / 0.08);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full border-2 border-transparent bg-clip-content;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
+
+/* Sonner toast overrides */
+[data-sonner-toaster] {
+  --normal-bg: hsl(var(--card));
+  --normal-border: hsl(var(--border));
+  --normal-text: hsl(var(--foreground));
+  font-family: inherit !important;
+}
+
+[data-sonner-toast] {
+  @apply backdrop-blur-xl;
+  border-radius: var(--radius) !important;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,579 @@
+[
+  {
+    "id": "basics-pieces",
+    "category": "basics",
+    "difficulty": 1,
+    "titleTr": "Taşları Tanı",
+    "titleEn": "Meet the Pieces",
+    "descTr": "Satrançtaki 6 taş türü ve nasıl hareket ettikleri.",
+    "descEn": "The 6 piece types and how they move.",
+    "steps": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "descTr": "Başlangıç pozisyonu. Beyaz altta, siyah üstte. Her oyuncu 16 taşla başlar: 1 şah, 1 vezir, 2 kale, 2 fil, 2 at, 8 piyon.",
+        "descEn": "Starting position. Each side has 16 pieces."
+      },
+      {
+        "fen": "7k/8/8/3K4/8/8/8/8 w - - 0 1",
+        "descTr": "ŞAH — bir kare her yöne gider. En değerli taş; kaybedersen oyun biter.",
+        "descEn": "KING — moves one square in any direction. Most important piece."
+      },
+      {
+        "fen": "7k/8/8/3Q4/8/8/8/4K3 w - - 0 1",
+        "descTr": "VEZİR — tahtanın en güçlü taşı. Dikey, yatay ve çapraz sınırsız hareket.",
+        "descEn": "QUEEN — strongest piece. Moves any direction, any distance."
+      },
+      {
+        "fen": "7k/8/8/3R4/8/8/8/4K3 w - - 0 1",
+        "descTr": "KALE — sadece dikey ve yatay sınırsız. Vezirin yarı gücü.",
+        "descEn": "ROOK — moves vertically and horizontally."
+      },
+      {
+        "fen": "7k/8/8/3B4/8/8/8/4K3 w - - 0 1",
+        "descTr": "FİL — sadece çapraz sınırsız hareket. Hep aynı renk karelerde kalır.",
+        "descEn": "BISHOP — moves diagonally only. Stays on same color squares."
+      },
+      {
+        "fen": "7k/8/8/3N4/8/8/8/4K3 w - - 0 1",
+        "descTr": "AT — L şeklinde hareket eder. Diğer taşların ÜSTÜNDEN ATLAYABİLİR! Tek bunu yapan taş.",
+        "descEn": "KNIGHT — moves in L-shape. Can JUMP over pieces."
+      },
+      {
+        "fen": "7k/8/8/8/8/8/3P4/4K3 w - - 0 1",
+        "descTr": "PİYON — ileri gider, çaprazına yer. İlk hamlesinde 2 kare gidebilir. 8. sıraya ulaşırsa istediğin taşa terfi eder!",
+        "descEn": "PAWN — moves forward, captures diagonally. Promotes on 8th rank."
+      }
+    ]
+  },
+  {
+    "id": "basics-pawn-promotion",
+    "category": "basics",
+    "difficulty": 1,
+    "titleTr": "Piyon Terfisi",
+    "titleEn": "Pawn Promotion",
+    "descTr": "Piyon 8. sıraya ulaşırsa Vezir, Kale, At veya Fil olabilir.",
+    "descEn": "When a pawn reaches the 8th rank, it promotes.",
+    "steps": [
+      {
+        "fen": "8/4P3/8/8/8/8/8/4K2k w - - 0 1",
+        "descTr": "Beyazın piyonu e7'de. Tek hamleyle e8'e gidecek ve istediği taşa terfi edecek.",
+        "descEn": "White pawn on e7 — one move from promotion."
+      },
+      {
+        "fen": "8/4P3/8/8/8/8/8/4K2k w - - 0 1",
+        "descTr": "e8'e VEZİR olarak terfi et! Bu hamlenin notasyonu e8=Q.",
+        "descEn": "Promote to Queen on e8!",
+        "expectedUci": "e7e8q"
+      }
+    ]
+  },
+  {
+    "id": "basics-castling",
+    "category": "basics",
+    "difficulty": 1,
+    "titleTr": "Rok (Kalelendirme)",
+    "titleEn": "Castling",
+    "descTr": "Şahını güvenli yere taşımak için en iyi hamle. Şah 2 kare ve kale şahın diğer yanına geçer.",
+    "descEn": "Move king to safety in one go.",
+    "steps": [
+      {
+        "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 3 3",
+        "descTr": "Beyaz: 1.e4 2.Nf3 3.Bc4. Şimdi kısa rok için her şey hazır.",
+        "descEn": "White set up for kingside castling."
+      },
+      {
+        "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+        "descTr": "KISA ROK yap! Şah g1'e, kale f1'e gider. Şahın artık güvende.",
+        "descEn": "Castle kingside! O-O.",
+        "expectedUci": "e1g1"
+      }
+    ]
+  },
+  {
+    "id": "basics-checkmate-patterns",
+    "category": "basics",
+    "difficulty": 1,
+    "titleTr": "Temel Mat Desenleri",
+    "titleEn": "Basic Mate Patterns",
+    "descTr": "En sık karşılaşılan mat desenlerini öğren.",
+    "descEn": "Learn the most common mate patterns.",
+    "steps": [
+      {
+        "fen": "6k1/5ppp/8/8/8/8/5PPP/4R1K1 w - - 0 1",
+        "descTr": "GERİ SIRA MATI — Siyahın şahı kendi piyonları arkasında sıkışmış. Kaleyi 8. sıraya getir!",
+        "descEn": "BACK RANK MATE — bring rook to 8th rank.",
+        "expectedUci": "e1e8"
+      },
+      {
+        "fen": "7k/8/6K1/8/8/8/8/R7 w - - 0 1",
+        "descTr": "MERDİVEN MATI — Senin şahın siyah şahın kaçışını kapatıyor. Kaleyi 8. sıraya getir.",
+        "descEn": "LADDER MATE — your king cuts off escape.",
+        "expectedUci": "a1a8"
+      },
+      {
+        "fen": "7k/4Q1pp/8/8/8/8/8/4R2K w - - 0 1",
+        "descTr": "VEZİR + KALE — vezir 8. sıraya gelir ve mat olur (kale destekliyor).",
+        "descEn": "Queen to 8th rank, rook supports.",
+        "expectedUci": "e7e8"
+      }
+    ]
+  },
+  {
+    "id": "basics-draw-rules",
+    "category": "basics",
+    "difficulty": 2,
+    "titleTr": "Beraberlik Kuralları",
+    "titleEn": "Draw Rules",
+    "descTr": "Pat, üçleme tekrarı, 50 hamle kuralı, yetersiz materyal.",
+    "descEn": "Stalemate, threefold, 50-move, insufficient material.",
+    "steps": [
+      {
+        "fen": "7k/8/6Q1/8/8/8/8/6K1 b - - 0 1",
+        "descTr": "PAT — siyah şah hareket edemiyor ama şah da değil. Bu BERABERLİK! Vezirle pat tuzağına düşme.",
+        "descEn": "STALEMATE — black has no legal moves but is not in check. DRAW."
+      },
+      {
+        "fen": "8/8/8/4k3/8/8/4K3/8 w - - 0 1",
+        "descTr": "YETERSİZ MATERYAL — sadece iki şah. Mat imkansız. Otomatik beraberlik.",
+        "descEn": "Insufficient material — automatic draw."
+      },
+      {
+        "fen": "8/8/8/3bk3/8/8/4K3/8 w - - 0 1",
+        "descTr": "Şah + Fil vs Şah da yetersiz materyal. Beraberlik.",
+        "descEn": "K+B vs K is also insufficient."
+      }
+    ]
+  },
+  {
+    "id": "tactic-fork",
+    "category": "tactic",
+    "difficulty": 2,
+    "titleTr": "Çatal Taktiği",
+    "titleEn": "Fork",
+    "descTr": "Bir hamlede iki düşman taşına saldır. En yaygın taktik.",
+    "descEn": "Attack two enemy pieces with one move.",
+    "steps": [
+      {
+        "fen": "4k3/8/8/3q4/8/4N3/8/4K3 w - - 0 1",
+        "descTr": "AT ÇATALI — At'lar L şeklinde gittikleri için harika çatal yaparlar. Burada Nxd5+ vezir kazanır.",
+        "descEn": "KNIGHT FORK — knights make great forks."
+      },
+      {
+        "fen": "4k3/8/8/3q4/8/4N3/8/4K3 w - - 0 1",
+        "descTr": "Nxd5+ oyna — at d5'te şah ve vezire saldırıyor. Karşı taraf şahını kurtarmak için veziri vermek zorunda.",
+        "descEn": "Knight forks king and queen.",
+        "expectedUci": "e3d5"
+      },
+      {
+        "fen": "4k3/8/8/8/3n4/8/8/4K2R w - - 0 1",
+        "descTr": "Siyahın atı d4'te. Bu pozisyonda at e2'ye gidip şah+kale çatalı yapabilir.",
+        "descEn": "Knight can fork king and rook."
+      }
+    ]
+  },
+  {
+    "id": "tactic-pin",
+    "category": "tactic",
+    "difficulty": 2,
+    "titleTr": "Çivi Taktiği",
+    "titleEn": "Pin",
+    "descTr": "Bir taşı arkasındaki daha değerli taşa karşı sabitle.",
+    "descEn": "Pin a piece against a more valuable one behind it.",
+    "steps": [
+      {
+        "fen": "r1bqkbnr/pppp1ppp/2n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R b KQkq - 3 3",
+        "descTr": "RUY LOPEZ — Bb5, c6'daki ata saldırıyor. Ama at şahın önünde değil, gerçek çivi değil (relative pin).",
+        "descEn": "Ruy Lopez — relative pin."
+      },
+      {
+        "fen": "4k3/4r3/8/8/8/8/4Q3/4K3 w - - 0 1",
+        "descTr": "MUTLAK ÇİVİ — Siyah kale şah önünde. Hareket edemez (şahı açar). Vezir kazanılır.",
+        "descEn": "ABSOLUTE PIN — rook cannot move (would expose king)."
+      },
+      {
+        "fen": "4k3/4r3/8/8/8/8/4Q3/4K3 w - - 0 1",
+        "descTr": "Qxe7+ oyna — kale ALINIR. Kale hareket edemez çünkü şah açılır.",
+        "descEn": "Capture the pinned rook.",
+        "expectedUci": "e2e7"
+      }
+    ]
+  },
+  {
+    "id": "tactic-skewer",
+    "category": "tactic",
+    "difficulty": 3,
+    "titleTr": "Şiş (Skewer)",
+    "titleEn": "Skewer",
+    "descTr": "Çivinin tersi — değerli taş öne, az değerli arkaya zorlanır.",
+    "descEn": "Reverse pin — force valuable piece to move, then capture behind.",
+    "steps": [
+      {
+        "fen": "4k3/8/8/8/8/8/8/4R1Kq w - - 0 1",
+        "descTr": "Burada bir şiş hamlesi var. Vezir h1'de, kale e1'de, şah e8'de. Hangi hamle hem şah hem vezire saldırır?",
+        "descEn": "Find the skewer move."
+      }
+    ]
+  },
+  {
+    "id": "tactic-discovered",
+    "category": "tactic",
+    "difficulty": 3,
+    "titleTr": "Açma Saldırısı (Discovery)",
+    "titleEn": "Discovered Attack",
+    "descTr": "Önündeki taşın hareketiyle arka taş saldırıyı açığa çıkarır. Çok güçlü çünkü iki saldırı bir anda.",
+    "descEn": "Move a piece to reveal an attack from behind.",
+    "steps": [
+      {
+        "fen": "4k3/8/8/3q4/8/3B4/8/3R3K w - - 0 1",
+        "descTr": "Beyaz: Fil d3, Kale d1, Şah h1. Siyah vezir d5. Fil hareket ederse, kale d5'teki veziri açıkça yiyebilir!",
+        "descEn": "Bishop blocks rook's attack on queen."
+      }
+    ]
+  },
+  {
+    "id": "tactic-double-attack",
+    "category": "tactic",
+    "difficulty": 3,
+    "titleTr": "Çifte Saldırı",
+    "titleEn": "Double Attack",
+    "descTr": "Bir taşın iki ayrı taşı tehdit etmesi. Çatal da bir tür çifte saldırı.",
+    "descEn": "One piece attacking two targets at once.",
+    "steps": [
+      {
+        "fen": "2r5/8/8/8/8/8/8/Q2K3k w - - 0 1",
+        "descTr": "Vezir a1'den hem kaleye (c8) hem şaha (h1) bakan kareye gidebilir mi?",
+        "descEn": "Can the queen attack both?"
+      },
+      {
+        "fen": "2r5/8/8/8/8/8/8/Q2K3k w - - 0 1",
+        "descTr": "Qa8+! Vezir şaha (yatay h-file değil ama h-rank? hayır) saldırıyor mu? Bu basit örnekte: Qa8 kaleye saldırır, ayrıca Qa1-h1 deseni varsa şaha. İncele.",
+        "descEn": "Queen double-attacks.",
+        "expectedUci": "a1a8"
+      }
+    ]
+  },
+  {
+    "id": "opening-italian",
+    "category": "opening",
+    "difficulty": 2,
+    "titleTr": "İtalyan Açılışı",
+    "titleEn": "Italian Game",
+    "descTr": "En klasik açılış. Erken gelişim ve f7'ye baskı.",
+    "descEn": "Classic opening with early development.",
+    "steps": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "descTr": "1. e4 oyna — merkezi kontrol et ve fil/veziri aç.",
+        "descEn": "Play 1.e4.",
+        "expectedUci": "e2e4"
+      },
+      {
+        "fen": "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
+        "descTr": "2. Nf3 — at'ı geliştir + e5 piyonuna saldır.",
+        "descEn": "2.Nf3 attacks e5.",
+        "expectedUci": "g1f3"
+      },
+      {
+        "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3",
+        "descTr": "3. Bc4 — İtalyan açılışının imza hamlesi. Fil zayıf f7 karesine bakar.",
+        "descEn": "3.Bc4 — the Italian move.",
+        "expectedUci": "f1c4"
+      },
+      {
+        "fen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+        "descTr": "Giuoco Piano — siyah da Bc5 ile aynı şekilde geliştirir. Sakin bir oyun.",
+        "descEn": "Giuoco Piano — quiet game."
+      }
+    ]
+  },
+  {
+    "id": "opening-ruy-lopez",
+    "category": "opening",
+    "difficulty": 3,
+    "titleTr": "İspanyol Açılışı (Ruy Lopez)",
+    "titleEn": "Ruy Lopez",
+    "descTr": "Dünya şampiyonlarının açılışı. c6 atına baskı.",
+    "descEn": "Opening of world champions.",
+    "steps": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "descTr": "1. e4 — klasik başlangıç.",
+        "descEn": "1.e4",
+        "expectedUci": "e2e4"
+      },
+      {
+        "fen": "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
+        "descTr": "2. Nf3 — e5'e baskı.",
+        "descEn": "2.Nf3",
+        "expectedUci": "g1f3"
+      },
+      {
+        "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3",
+        "descTr": "3. Bb5 — Ruy Lopez! Fil at'a saldırıyor. At hareket ederse e5'i koruyamaz.",
+        "descEn": "3.Bb5 — Ruy Lopez.",
+        "expectedUci": "f1b5"
+      },
+      {
+        "fen": "r1bqkbnr/1ppp1ppp/p1n5/1B2p3/4P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 0 4",
+        "descTr": "Morphy savunması — siyah a6 ile fili tehdit eder. Beyazın seçimleri: Ba4 (Berlin), Bxc6 (Exchange).",
+        "descEn": "Morphy defense."
+      }
+    ]
+  },
+  {
+    "id": "opening-sicilian",
+    "category": "opening",
+    "difficulty": 3,
+    "titleTr": "Sicilya Savunması",
+    "titleEn": "Sicilian Defense",
+    "descTr": "Siyahın en agresif e4'e cevabı. Asimetrik, mücadeleli oyunlar.",
+    "descEn": "Black's most aggressive reply to 1.e4.",
+    "steps": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1",
+        "descTr": "1...c5 oyna — Sicilya! Siyah, e5'in yerine kanattan saldırır. Çok karmaşık oyunlar üretir.",
+        "descEn": "1...c5 — the Sicilian.",
+        "expectedUci": "c7c5"
+      },
+      {
+        "fen": "rnbqkbnr/pp2pppp/3p4/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 0 3",
+        "descTr": "Najdorf, Dragon, Sveshnikov, Taymanov... Sicilya'nın yüzlerce varyantı var.",
+        "descEn": "Sicilian has many variations."
+      }
+    ]
+  },
+  {
+    "id": "opening-queens-gambit",
+    "category": "opening",
+    "difficulty": 2,
+    "titleTr": "Vezir Gambiti",
+    "titleEn": "Queen's Gambit",
+    "descTr": "Beyazın merkezde piyon teklif ederek merkez kontrolü kazanması.",
+    "descEn": "White offers a pawn for central control.",
+    "steps": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "descTr": "1. d4 oyna — kraliçe kanadı açılışı.",
+        "descEn": "1.d4",
+        "expectedUci": "d2d4"
+      },
+      {
+        "fen": "rnbqkbnr/ppp1pppp/8/3p4/3P4/8/PPP1PPPP/RNBQKBNR w KQkq - 0 2",
+        "descTr": "2. c4 — Vezir Gambiti! Piyon \"kurban\" ediliyor (gerçekte sonradan geri alınabilir).",
+        "descEn": "2.c4 — Queen's Gambit.",
+        "expectedUci": "c2c4"
+      },
+      {
+        "fen": "rnbqkbnr/ppp1pppp/8/8/2pP4/8/PP2PPPP/RNBQKBNR w KQkq - 0 3",
+        "descTr": "Vezir Gambiti Kabul (QGA) — siyah piyonu yer ama beyaz e3, Bxc4 ile geri alır.",
+        "descEn": "Queen's Gambit Accepted."
+      },
+      {
+        "fen": "rnbqkbnr/ppp2ppp/4p3/3p4/2PP4/8/PP2PPPP/RNBQKBNR w KQkq - 0 3",
+        "descTr": "Vezir Gambiti Red (QGD) — siyah merkezi savunur. Daha solid.",
+        "descEn": "Queen's Gambit Declined."
+      }
+    ]
+  },
+  {
+    "id": "opening-french",
+    "category": "opening",
+    "difficulty": 3,
+    "titleTr": "Fransız Savunması",
+    "titleEn": "French Defense",
+    "descTr": "1.e4 e6 — solid ama biraz pasif başlangıç. Sağlam piyon yapısı.",
+    "descEn": "Solid but slightly passive defense.",
+    "steps": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1",
+        "descTr": "1...e6 — Fransız! Siyah d5 için hazırlık yapıyor.",
+        "descEn": "1...e6 — French.",
+        "expectedUci": "e7e6"
+      },
+      {
+        "fen": "rnbqkbnr/ppp2ppp/4p3/3p4/3PP3/8/PPP2PPP/RNBQKBNR w KQkq - 0 3",
+        "descTr": "2.d4 d5 — klasik Fransız ana hattı. Şimdi 3.Nc3, 3.Nd2 (Tarrasch), 3.e5 (Advance), 3.exd5 (Exchange).",
+        "descEn": "Main French line."
+      }
+    ]
+  },
+  {
+    "id": "endgame-kr-vs-k",
+    "category": "endgame",
+    "difficulty": 2,
+    "titleTr": "Şah + Kale vs Şah",
+    "titleEn": "King + Rook vs King",
+    "descTr": "Temel mat. Kazanmayı bilmek zorundasın.",
+    "descEn": "Fundamental endgame — you MUST know this.",
+    "steps": [
+      {
+        "fen": "8/8/8/3k4/8/8/8/3KR3 w - - 0 1",
+        "descTr": "Strateji: kale ile düşman şahını bir sıraya/kolona sıkıştır. Sonra kendi şahınla yaklaş. Merdiven kur.",
+        "descEn": "Strategy: trap king to edge with rook, then approach with king."
+      }
+    ]
+  },
+  {
+    "id": "endgame-kp-vs-k",
+    "category": "endgame",
+    "difficulty": 3,
+    "titleTr": "Şah + Piyon vs Şah",
+    "titleEn": "King + Pawn vs King",
+    "descTr": "Oposizyon ve anahtar kareler — piyonu vezire promote etmenin sırrı.",
+    "descEn": "Opposition and key squares.",
+    "steps": [
+      {
+        "fen": "8/8/8/4k3/4P3/4K3/8/8 w - - 0 1",
+        "descTr": "Beyaz şah piyonun ÖNÜNDE olmalı. Opposition kazandırır.",
+        "descEn": "White king must be in front of pawn."
+      }
+    ]
+  },
+  {
+    "id": "endgame-opposition",
+    "category": "endgame",
+    "difficulty": 3,
+    "titleTr": "Oposizyon",
+    "titleEn": "Opposition",
+    "descTr": "Sondaki en önemli kavram — şahların karşı karşıya olması.",
+    "descEn": "Most important endgame concept.",
+    "steps": [
+      {
+        "fen": "4k3/8/4K3/8/8/8/8/8 b - - 0 1",
+        "descTr": "Şahlar arasında 1 kare — bu OPOSİZYON. Sıra kimde ise o KAYBEDER (zugzwang).",
+        "descEn": "Kings 1 square apart — whoever moves loses ground."
+      },
+      {
+        "fen": "4k3/8/8/4K3/8/8/8/8 b - - 0 1",
+        "descTr": "Şahlar arasında 2 kare — UZUN OPOSİZYON. Aynı kural.",
+        "descEn": "Long opposition — same principle."
+      }
+    ]
+  },
+  {
+    "id": "endgame-rook-vs-pawn",
+    "category": "endgame",
+    "difficulty": 4,
+    "titleTr": "Kale vs Piyon",
+    "titleEn": "Rook vs Pawn",
+    "descTr": "Piyon promote olmaya yakınsa kale her zaman kazanamaz. Bilmen gereken kurallar.",
+    "descEn": "Subtle endgame — pawn race vs rook.",
+    "steps": [
+      {
+        "fen": "8/8/8/8/8/k7/p7/4K2R w - - 0 1",
+        "descTr": "Piyon a2'de. Promote olmak üzere. Kale doğru hamleyi bulmak zorunda.",
+        "descEn": "Pawn one step from queening."
+      }
+    ]
+  },
+  {
+    "id": "strategy-center",
+    "category": "strategy",
+    "difficulty": 2,
+    "titleTr": "Merkezi Kontrol Et",
+    "titleEn": "Control the Center",
+    "descTr": "d4-e4-d5-e5 kareleri tahtanın merkezi. Onları kontrol eden oyunu yönlendirir.",
+    "descEn": "Center squares win games.",
+    "steps": [
+      {
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "descTr": "Tahtanın merkezi: d4, e4, d5, e5. Bu 4 kareyi piyon ve taşlarla kontrol et.",
+        "descEn": "Center = d4,e4,d5,e5."
+      },
+      {
+        "fen": "rnbqkbnr/pppp1ppp/8/8/3pP3/8/PPP2PPP/RNBQKBNR w KQkq - 0 3",
+        "descTr": "Skoç açılışı — piyonu d4'e oynayarak merkezi açıyoruz. Materyal eşit, gelişim hızlı.",
+        "descEn": "Scotch — opens the center."
+      },
+      {
+        "fen": "rnbqkb1r/pppp1ppp/4pn2/8/2P5/2N2N2/PP1PPPPP/R1BQKB1R b KQkq - 1 3",
+        "descTr": "Catalan/Nimzo başlangıcı — piyonlarla değil de taşlarla merkez kontrolü (hipermodern).",
+        "descEn": "Hypermodern center control with pieces."
+      }
+    ]
+  },
+  {
+    "id": "strategy-development",
+    "category": "strategy",
+    "difficulty": 2,
+    "titleTr": "Taşları Geliştir",
+    "titleEn": "Develop Your Pieces",
+    "descTr": "\"Aynı taşı iki kez oynama\" — açılışta her taşı bir kez oynayıp savaşa hazır hale getir.",
+    "descEn": "\"Don't move the same piece twice in the opening.\"",
+    "steps": [
+      {
+        "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/2N2N2/PPPP1PPP/R1BQK2R b KQkq - 5 4",
+        "descTr": "Tüm hafif taşlar (atlar+filler) geliştirildi. Rok için hazır. İdeal gelişim.",
+        "descEn": "All minor pieces developed."
+      },
+      {
+        "fen": "r1bqkbnr/pppp1p1p/2n3p1/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR w KQkq - 0 4",
+        "descTr": "KÖTÜ açılış — vezir erken çıktı (Qh5) ve şimdi at'la kovalanıyor. Tempo kaybı.",
+        "descEn": "Bad opening — queen out too early."
+      }
+    ]
+  },
+  {
+    "id": "strategy-king-safety",
+    "category": "strategy",
+    "difficulty": 2,
+    "titleTr": "Şah Güvenliği",
+    "titleEn": "King Safety",
+    "descTr": "Rok yap, piyon kalkanını kırma, hafif taşlarla şahı koru.",
+    "descEn": "Castle, keep pawn shield, defend with minor pieces.",
+    "steps": [
+      {
+        "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQ1RK1 b kq - 5 4",
+        "descTr": "Rok yapıldı — şah artık g1'de güvende. f2, g2, h2 piyonları kalkan oluşturuyor.",
+        "descEn": "Castled — king safe behind pawns."
+      },
+      {
+        "fen": "r1bqkb1r/pppp1p2/2n2n1p/4p1p1/2BPP3/5N2/PPP2PPP/RNBQ1RK1 w kq - 0 6",
+        "descTr": "Siyah piyon kalkanını kırdı (h6, g5) — bu şahın güvenliğini ZAYIFLATIR. Beyaz şimdi saldırabilir.",
+        "descEn": "Black weakened pawn shield — vulnerable."
+      }
+    ]
+  },
+  {
+    "id": "strategy-pawn-structure",
+    "category": "strategy",
+    "difficulty": 3,
+    "titleTr": "Piyon Yapısı",
+    "titleEn": "Pawn Structure",
+    "descTr": "İzole piyon, çift piyon, geri piyon — kötü yapılar zayıflık.",
+    "descEn": "Isolated, doubled, backward pawns — weaknesses.",
+    "steps": [
+      {
+        "fen": "rnbqkbnr/pp1p1ppp/2p5/8/2P5/8/PP1PPPPP/RNBQKBNR w KQkq - 0 1",
+        "descTr": "c4 piyonu İZOLE — b veya d piyonu yok, koruyucusu yok. Zayıflık.",
+        "descEn": "Isolated c-pawn — weakness."
+      },
+      {
+        "fen": "rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "descTr": "İdeal piyon yapısı — beyaz ve siyah simetrik, hepsi kolonlarda. Sağlam.",
+        "descEn": "Symmetric solid pawn structure."
+      }
+    ]
+  },
+  {
+    "id": "strategy-piece-activity",
+    "category": "strategy",
+    "difficulty": 3,
+    "titleTr": "Taş Aktifliği",
+    "titleEn": "Piece Activity",
+    "descTr": "Aktif taş > Pasif taş. Atları forposta yerleştir, filleri açık çapraza koy.",
+    "descEn": "Active pieces beat passive ones.",
+    "steps": [
+      {
+        "fen": "4r1k1/5ppp/8/3N4/8/8/PPP2PPP/4R1K1 w - - 0 1",
+        "descTr": "Beyaz at d5'te FORPOST — düşman piyonu tarafından kovulamaz, merkezde dominant.",
+        "descEn": "White knight on outpost d5 — strong."
+      },
+      {
+        "fen": "6k1/5ppp/8/8/3B4/8/PPP2PPP/6K1 w - - 0 1",
+        "descTr": "Açık çaprazda fil — uzun mesafede tehlikeli (FIANCHETTO bishop benzeri).",
+        "descEn": "Bishop on long open diagonal."
+      }
+    ]
+  }
+]
