@@ -1,7 +1,7 @@
 {
     "app": {
-        "name": "Satranç",
-        "tagline": "AI Destekli Öğrenme Platformu"
+        "name": "ChessAetherius",
+        "tagline": "AI Destekli Satranç"
     },
     "nav": {
         "home": "Anasayfa",

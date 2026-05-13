@@ -63,13 +63,13 @@ export function HomePage() {
                     </p>
                     <div className="flex flex-wrap gap-2">
                         <Button asChild size="lg" variant="default">
-                            <Link to="/play"><Swords className="w-5 h-5" />{t('home.playNow')}</Link>
+                            <Link to="/app/play"><Swords className="w-5 h-5" />{t('home.playNow')}</Link>
                         </Button>
                         <Button asChild size="lg" variant="outline">
-                            <Link to="/puzzles"><Puzzle className="w-5 h-5" />{t('home.tryPuzzle')}</Link>
+                            <Link to="/app/puzzles"><Puzzle className="w-5 h-5" />{t('home.tryPuzzle')}</Link>
                         </Button>
                         <Button asChild size="lg" variant="ghost">
-                            <Link to="/lessons"><GraduationCap className="w-5 h-5" />{t('home.startLearning')}</Link>
+                            <Link to="/app/lessons"><GraduationCap className="w-5 h-5" />{t('home.startLearning')}</Link>
                         </Button>
                     </div>
                 </div>
@@ -86,7 +86,7 @@ export function HomePage() {
             {/* Daily puzzle hero */}
             {dailyPuzzle && (
                 <motion.div initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }}>
-                    <Link to="/puzzles">
+                    <Link to="/app/puzzles">
                         <Card className="card-modern overflow-hidden relative border-accent/30 bg-gradient-to-r from-accent/10 to-transparent hover:border-accent/60 transition-colors">
                             <CardContent className="p-4 flex items-center gap-4">
                                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent to-amber-600 flex items-center justify-center shrink-0 shadow-lg">
@@ -113,10 +113,10 @@ export function HomePage() {
             <section className="space-y-3">
                 <h2 className="text-lg font-semibold">{t('home.quickActions.title')}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-                    <QuickAction to="/play" icon={Swords} title={t('home.quickActions.playVsAi')} desc={t('home.quickActions.playVsAiDesc')} />
-                    <QuickAction to="/puzzles" icon={Target} title={t('home.quickActions.dailyPuzzle')} desc={t('home.quickActions.dailyPuzzleDesc')} />
-                    <QuickAction to="/lessons" icon={GraduationCap} title={t('home.quickActions.continueLesson')} desc={t('home.quickActions.continueLessonDesc')} />
-                    <QuickAction to="/analysis" icon={LineChart} title={t('home.quickActions.analyzeGame')} desc={t('home.quickActions.analyzeGameDesc')} />
+                    <QuickAction to="/app/play" icon={Swords} title={t('home.quickActions.playVsAi')} desc={t('home.quickActions.playVsAiDesc')} />
+                    <QuickAction to="/app/puzzles" icon={Target} title={t('home.quickActions.dailyPuzzle')} desc={t('home.quickActions.dailyPuzzleDesc')} />
+                    <QuickAction to="/app/lessons" icon={GraduationCap} title={t('home.quickActions.continueLesson')} desc={t('home.quickActions.continueLessonDesc')} />
+                    <QuickAction to="/app/analysis" icon={LineChart} title={t('home.quickActions.analyzeGame')} desc={t('home.quickActions.analyzeGameDesc')} />
                 </div>
             </section>
 
@@ -192,7 +192,7 @@ export function HomePage() {
                                 </div>
                             </div>
                         )}
-                        <Link to="/profile" className="text-xs text-primary hover:underline inline-flex items-center gap-1">
+                        <Link to="/app/profile" className="text-xs text-primary hover:underline inline-flex items-center gap-1">
                             Tüm başarımları gör →
                         </Link>
                     </CardContent>
@@ -204,7 +204,7 @@ export function HomePage() {
                 <div className="flex items-center justify-between">
                     <h2 className="text-lg font-semibold">{t('home.recentGames')}</h2>
                     {recentGames && recentGames.length > 0 && (
-                        <Link to="/profile" className="text-sm text-primary hover:underline">
+                        <Link to="/app/profile" className="text-sm text-primary hover:underline">
                             {t('home.viewAll')} →
                         </Link>
                     )}
@@ -221,7 +221,7 @@ export function HomePage() {
                             const isLoss = g.result !== '*' && !userWon && !isDraw
                             const eloChange = g.userEloAfter - g.userEloBefore
                             return (
-                                <Link key={g.id} to="/analysis" state={{ gameId: g.id }}>
+                                <Link key={g.id} to="/app/analysis" state={{ gameId: g.id }}>
                                     <Card className="card-modern cursor-pointer hover:border-primary/40 transition-colors">
                                         <CardContent className="p-3 flex items-center justify-between">
                                             <div className="flex items-center gap-3 min-w-0">

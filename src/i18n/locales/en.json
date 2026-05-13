@@ -1,7 +1,7 @@
 {
     "app": {
-        "name": "Satranç",
-        "tagline": "AI-Powered Chess Learning"
+        "name": "ChessAetherius",
+        "tagline": "AI-Powered Chess"
     },
     "nav": {
         "home": "Home",

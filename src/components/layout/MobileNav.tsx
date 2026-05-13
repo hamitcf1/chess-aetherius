@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next'
 import { Home, Swords, Puzzle, GraduationCap, UserCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-const MOBILE_NAV = [
-    { to: '/', key: 'home', icon: Home },
-    { to: '/play', key: 'play', icon: Swords },
-    { to: '/puzzles', key: 'puzzles', icon: Puzzle },
-    { to: '/lessons', key: 'lessons', icon: GraduationCap },
-    { to: '/profile', key: 'profile', icon: UserCircle },
-] as const
+const MOBILE_NAV: { to: string; key: string; icon: any; exact?: boolean }[] = [
+    { to: '/app', key: 'home', icon: Home, exact: true },
+    { to: '/app/play', key: 'play', icon: Swords },
+    { to: '/app/puzzles', key: 'puzzles', icon: Puzzle },
+    { to: '/app/lessons', key: 'lessons', icon: GraduationCap },
+    { to: '/app/profile', key: 'profile', icon: UserCircle },
+]
 
 export function MobileNav() {
     const { t } = useTranslation()
@@ -17,8 +17,10 @@ export function MobileNav() {
     return (
         <nav className="md:hidden fixed bottom-0 inset-x-0 z-40 border-t border-border/50 bg-card/95 backdrop-blur-md pb-safe">
             <div className="grid grid-cols-5 gap-1 px-1 py-1">
-                {MOBILE_NAV.map(({ to, key, icon: Icon }) => {
-                    const active = loc.pathname === to || (to !== '/' && loc.pathname.startsWith(to))
+                {MOBILE_NAV.map(({ to, key, icon: Icon, exact }) => {
+                    const active = exact
+                        ? loc.pathname === to || loc.pathname === '/app/'
+                        : loc.pathname.startsWith(to)
                     return (
                         <Link
                             key={key}
