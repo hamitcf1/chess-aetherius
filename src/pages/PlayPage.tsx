@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, useMemo, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Crown, Swords, Flag, RotateCcw, Sparkles, Shuffle, SlidersHorizontal, Clock, FlipHorizontal2, Lightbulb, Undo2, Copy, Download, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Eye, Share2, Image, FileText } from 'lucide-react'
@@ -821,26 +822,87 @@ Asla 80 kelimeyi aşma. Markdown başlığı kullanma, sadece düz paragraflar.`
                                         Geri Al
                                     </Button>
                                 </div>
+                                <div className="grid grid-cols-4 gap-2">
+                                    <Button variant="outline" size="sm" onClick={() => setFlipped(f => !f)} title="Tahtayı çevir (F)">
+                                        <FlipHorizontal2 className="w-4 h-4" />
+                                    </Button>
+                                    <Button variant="outline" size="sm" onClick={() => setShareDialogOpen(true)} disabled={(game?.moves.length ?? 0) < 1} title="Oyunu paylaş">
+                                        <Share2 className="w-4 h-4" />
+                                    </Button>
+                                    <Button variant="outline" size="sm" onClick={() => setResignDialogOpen(true)} title={t('common.resign')}>
+                                        <Flag className="w-4 h-4" />
+                                    </Button>
+                                    <Button variant="ghost" size="sm" onClick={handleNewGame} title="Yeni oyun">
+                                        <RotateCcw className="w-4 h-4" />
+                                    </Button>
+                                </div>
+                                {(game?.moves.length ?? 0) > 0 && (
+                                    <div className="text-[10px] text-muted-foreground text-center pt-1">
+                                        ← → ile hamle gez · Esc canlıya dön
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
+                        {status === 'finished' && game && (
+                            <div className="space-y-2">
+                                {/* Review nav — scrub through finished game */}
+                                <Card className="bg-card/40">
+                                    <CardContent className="p-3 space-y-2">
+                                        <div className="text-xs text-muted-foreground text-center">
+                                            Hamle hamle incele
+                                        </div>
+                                        <div className="flex items-center justify-center gap-1">
+                                            <Button variant="outline" size="icon-sm" onClick={() => setReviewPly(0)} title="Başa">
+                                                <ChevronsLeft className="w-4 h-4" />
+                                            </Button>
+                                            <Button variant="outline" size="icon-sm" onClick={() => setReviewPly(p => Math.max(0, (p ?? game.moves.length) - 1))} title="Geri">
+                                                <ChevronLeft className="w-4 h-4" />
+                                            </Button>
+                                            <Badge variant="default" className="font-mono px-2 min-w-[60px] justify-center">
+                                                {(reviewPly ?? game.moves.length)} / {game.moves.length}
+                                            </Badge>
+                                            <Button variant="outline" size="icon-sm" onClick={() => setReviewPly(p => {
+                                                if (p === null) return null
+                                                const next = p + 1
+                                                return next >= game.moves.length ? null : next
+                                            })} title="İleri">
+                                                <ChevronRight className="w-4 h-4" />
+                                            </Button>
+                                            <Button variant="outline" size="icon-sm" onClick={() => setReviewPly(null)} title="Sona / canlı">
+                                                <ChevronsRight className="w-4 h-4" />
+                                            </Button>
+                                        </div>
+                                        <div className="text-[10px] text-muted-foreground text-center">
+                                            Klavye: ← → ile gez · Esc'le sona dön
+                                        </div>
+                                    </CardContent>
+                                </Card>
+
                                 <div className="grid grid-cols-3 gap-2">
                                     <Button variant="outline" size="sm" onClick={() => setFlipped(f => !f)} title="Tahtayı çevir">
                                         <FlipHorizontal2 className="w-4 h-4" />
                                     </Button>
-                                    <Button variant="outline" size="sm" onClick={() => setResignDialogOpen(true)}>
-                                        <Flag className="w-4 h-4" />
-                                        {t('common.resign')}
+                                    <Button variant="outline" size="sm" onClick={() => setShareDialogOpen(true)} title="Oyunu paylaş">
+                                        <Share2 className="w-4 h-4" />
+                                        Paylaş
                                     </Button>
-                                    <Button variant="ghost" size="sm" onClick={handleNewGame}>
-                                        <RotateCcw className="w-4 h-4" />
+                                    <Button variant="outline" size="sm" asChild title="Tam analize git">
+                                        <Link to="/app/analysis" state={{ gameId: game.id }}>
+                                            <Eye className="w-4 h-4" />
+                                        </Link>
                                     </Button>
                                 </div>
+                                <Button onClick={handleNewGame} size="lg" className="w-full">
+                                    <Sparkles className="w-4 h-4" />
+                                    {t('play.playAgain')}
+                                </Button>
+                                {!resultDialogOpen && (
+                                    <Button variant="ghost" size="sm" className="w-full" onClick={() => setResultDialogOpen(true)}>
+                                        Sonuç ekranını tekrar aç
+                                    </Button>
+                                )}
                             </div>
-                        )}
-
-                        {status === 'finished' && (
-                            <Button onClick={handleNewGame} size="lg" className="w-full">
-                                <Sparkles className="w-4 h-4" />
-                                {t('play.playAgain')}
-                            </Button>
                         )}
                     </div>
                 </div>

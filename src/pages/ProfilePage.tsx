@@ -1,7 +1,8 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
-import { TrendingUp, Trophy, Target, Flame, Crown, Lock, Pencil, RotateCcw, Copy } from 'lucide-react'
+import { TrendingUp, Trophy, Target, Flame, Crown, Lock, Pencil, RotateCcw, Copy, Eye } from 'lucide-react'
 import * as Icons from 'lucide-react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { toast } from 'sonner'
@@ -138,27 +139,43 @@ export function ProfilePage() {
                             const isDraw = g.result === '1/2-1/2'
                             const eloChange = g.userEloAfter - g.userEloBefore
                             return (
-                                <Card key={g.id} className="card-modern">
-                                    <CardContent className="p-3 flex items-center justify-between">
-                                        <div className="flex items-center gap-3 min-w-0">
+                                <Card key={g.id} className="card-modern cursor-pointer hover:border-primary/40 transition-colors group">
+                                    <CardContent className="p-3 flex items-center justify-between gap-2">
+                                        <Link to="/app/analysis" state={{ gameId: g.id }} className="flex items-center gap-3 min-w-0 flex-1">
                                             <div className={cn('w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm shrink-0',
                                                 userWon ? 'bg-success/20 text-success' : isDraw ? 'bg-muted text-muted-foreground' : 'bg-destructive/20 text-destructive'
                                             )}>
                                                 {userWon ? '✓' : isDraw ? '=' : '✗'}
                                             </div>
                                             <div className="min-w-0">
-                                                <div className="font-medium text-sm truncate">{g.whiteName} vs {g.blackName}</div>
+                                                <div className="font-medium text-sm truncate group-hover:text-primary transition-colors">{g.whiteName} vs {g.blackName}</div>
                                                 <div className="text-xs text-muted-foreground">
                                                     {formatRelativeTime(g.createdAt, lang)} • {g.moves.length} ply • {t(`termination.${g.termination}`)}
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="flex items-center gap-2 shrink-0">
+                                        </Link>
+                                        <div className="flex items-center gap-1.5 shrink-0">
+                                            {eloChange !== 0 && (
+                                                <Badge variant={eloChange > 0 ? 'success' : 'destructive'}>
+                                                    {eloChange > 0 ? '+' : ''}{eloChange}
+                                                </Badge>
+                                            )}
+                                            <Button
+                                                variant="ghost"
+                                                size="icon-sm"
+                                                asChild
+                                                title="Analiz et"
+                                            >
+                                                <Link to="/app/analysis" state={{ gameId: g.id }}>
+                                                    <Eye className="w-3.5 h-3.5" />
+                                                </Link>
+                                            </Button>
                                             <Button
                                                 variant="ghost"
                                                 size="icon-sm"
                                                 onClick={(e) => {
                                                     e.stopPropagation()
+                                                    e.preventDefault()
                                                     const pgn = buildPgn(g)
                                                     navigator.clipboard.writeText(pgn)
                                                         .then(() => toast.success('PGN panoya kopyalandı'))
@@ -168,11 +185,6 @@ export function ProfilePage() {
                                             >
                                                 <Copy className="w-3.5 h-3.5" />
                                             </Button>
-                                            {eloChange !== 0 && (
-                                                <Badge variant={eloChange > 0 ? 'success' : 'destructive'}>
-                                                    {eloChange > 0 ? '+' : ''}{eloChange}
-                                                </Badge>
-                                            )}
                                         </div>
                                     </CardContent>
                                 </Card>
