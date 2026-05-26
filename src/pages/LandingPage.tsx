@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import {
@@ -9,12 +9,12 @@ import { Button } from '@/components/ui/button'
 import { PublicLayout } from '@/components/layout/PublicLayout'
 import { useAuthStore } from '@/stores/authStore'
 
-const STAGGER = {
+const STAGGER: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.05 } },
 }
 
-const FADE_UP = {
+const FADE_UP: Variants = {
     hidden: { opacity: 0, y: 16 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
 }

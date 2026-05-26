@@ -86,13 +86,18 @@ export default function App() {
                 <ThemeBootstrap />
                 <GlobalEffects onConfetti={handleConfetti} />
                 <Routes>
-                    <Route path="/" element={<LandingPage />} />
-                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/" element={<PublicLayout><LandingPage /></PublicLayout>} />
+                    <Route path="/login" element={<PublicLayout><LoginPage /></PublicLayout>} />
                     <Route path="/app/*" element={<AppShell />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
                 <Confetti trigger={confettiTrigger} />
                 <Toaster position="top-right" richColors theme="dark" />
+            </TooltipProvider>
+        </BrowserRouter>
+    )
+}
+        <Toaster position="top-right" richColors theme="dark" />
             </TooltipProvider>
         </BrowserRouter>
     )
